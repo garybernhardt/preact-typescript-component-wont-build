@@ -8,3 +8,14 @@ src/mycomponent.ts:5:14 - error TS2345: Argument of type 'typeof MyComponent2' i
 
 5     return h(MyComponent2, {})
 ```
+
+4. Answer: because `MyComponent` isn't passing the required prop `foo` to `MyComponent2`.
+   Change it to this and it will work:
+
+```
+export class MyComponent extends Component<{}, {}> {
+  render() {
+    return h(MyComponent2, {foo: 1})
+  }
+}
+```
